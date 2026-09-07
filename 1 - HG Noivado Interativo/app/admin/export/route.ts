@@ -8,8 +8,7 @@ type Row = { name: string; attendance: string; phone: string | null; companions:
 const csvCell = (value: string | number | null | undefined) => `"${String(value ?? '').replaceAll('"', '""')}"`;
 
 export async function GET() {
-  const user = await requireAdmin('/admin/export');
-  if (!user) return NextResponse.json({ error: 'Acesso negado.' }, { status: 403 });
+  if (!(await requireAdmin())) return NextResponse.json({ error: 'Acesso negado.' }, { status: 403 });
   const result = await getD1().prepare('SELECT name, attendance, phone, companions, companion_names, message, created_at FROM rsvps ORDER BY created_at DESC').all<Row>();
   const header = ['Nome', 'Resposta', 'Telefone', 'Acompanhantes', 'Nomes dos acompanhantes', 'Mensagem', 'Recebido em'];
   const lines = [header, ...(result.results || []).map((row) => [row.name, row.attendance === 'yes' ? 'Confirmado' : 'Não poderá ir', row.phone, row.companions, row.companion_names, row.message, row.created_at])];
