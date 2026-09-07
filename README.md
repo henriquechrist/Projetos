@@ -1,8 +1,6 @@
-# Projetos
+# Projects
 
-Repositório para sites, protótipos e testes.
+A collection of my public projects across software, automation, data, web and more.
 
-## Projetos atuais
 
-- `1 - HG Noivado Interativo`: convite e confirmação de presença do jantar de noivado.
 
