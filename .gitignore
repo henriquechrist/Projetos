@@ -1,0 +1,10 @@
+**/node_modules/
+**/dist/
+**/.vinext/
+**/.wrangler/
+**/.env
+**/.env.*
+**/*.tsbuildinfo
+*.tar
+*.tar.gz
+
